@@ -4,14 +4,14 @@ source ("rankhospital.R")
 rankall <- function (inCondition, inRank = "best") {
   
   outcome <-read.csv("outcome-of-care-measures.csv", colClasses="character")
-  states <- sort (unique (outcome$State))
-  hospitals = vector()
+  state <- sort (unique (outcome$State))
+  hospital = vector()
   
-  for (i in 1:length(states)) {
-    hospitalName <- rankhospital (states[i], inCondition, inRank)
-    hospitals[i] <- hospitalName
+  for (i in 1:length(state)) {
+    hospitalName <- rankhospital (state[i], inCondition, inRank)
+    hospital[i] <- hospitalName
   }
   
-  results <- data.frame (hospitals, states)
+  results <- data.frame (hospital, state)
   return (results)
 }
